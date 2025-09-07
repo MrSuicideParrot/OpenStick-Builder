@@ -18,6 +18,7 @@ apt install -qqy --no-install-recommends \
     hostapd \
     iptables \
     libconfig9 \
+    libgpiod \
     locales \
     modemmanager \
     netcat-traditional \
@@ -30,7 +31,12 @@ apt install -qqy --no-install-recommends \
     systemd-timesyncd \
     tzdata \
     wireguard-tools \
+    curl \
     wpasupplicant
+curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+apt update -qqy
+apt install -qqy --no-install-recommends tailscale
 apt clean
 rm -rf /var/lib/apt/lists/*
 
