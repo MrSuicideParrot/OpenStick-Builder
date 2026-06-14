@@ -77,8 +77,6 @@ SystemMaxUse=300M
 SystemKeepFree=1G
 EOF
 
-# install dnsproxy
-bash /install_dnsproxy.sh
 
 systemctl mask systemd-networkd-wait-online.service
 
